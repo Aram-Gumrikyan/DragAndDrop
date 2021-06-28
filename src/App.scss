@@ -1,0 +1,43 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+.App {
+    display: grid;
+    grid-template-columns: 20% 80%;
+    justify-content: space-between;
+    height: 100vh;
+}
+
+.dragOver {
+    .top,
+    .bottom,
+    .left,
+    .right {
+        display: block;
+    }
+
+    .top,
+    .bottom {
+        width: 100%;
+        height: 10%;
+    }
+
+    .left,
+    .right {
+        width: 100%;
+        height: 100%;
+    }
+
+    & > div {
+        width: 100%;
+        height: 10%;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+}

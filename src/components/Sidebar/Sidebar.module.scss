@@ -1,0 +1,15 @@
+.sidebar {
+    display: grid;
+    padding: 1rem;
+
+    & > div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid black;
+    }
+
+    &:-moz-drag-over {
+        outline: 1px solid black;
+    }
+}
