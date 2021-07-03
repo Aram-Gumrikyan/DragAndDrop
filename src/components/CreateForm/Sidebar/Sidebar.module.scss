@@ -8,8 +8,10 @@
         justify-content: center;
         border: 1px solid black;
     }
+}
 
-    &:-moz-drag-over {
-        outline: 1px solid black;
+.element {
+    &:hover {
+        background-color: #ff2e63;
     }
 }

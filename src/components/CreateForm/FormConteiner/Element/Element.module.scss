@@ -1,0 +1,16 @@
+.element {
+    border: 1px solid black;
+    border-radius: 20%;
+    padding: 1rem;
+}
+
+.modalBut {
+    border: none;
+    color: yellow;
+    background-color: black;
+    margin-left: 0.5rem;
+
+    &:hover {
+        transform: scale(1.3);
+    }
+}

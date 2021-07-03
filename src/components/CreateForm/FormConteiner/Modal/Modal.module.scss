@@ -1,0 +1,20 @@
+.modal {
+    position: fixed;
+    bottom: 1rem;
+    background-color: white;
+
+    form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+        input,
+        select {
+            padding: 0.5rem;
+            outline: none;
+        }
+
+        button {
+            width: 200%;
+        }
+    }
+}

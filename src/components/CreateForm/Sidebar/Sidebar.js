@@ -16,7 +16,12 @@ export default class Sidebar extends Component {
         return (
             <div className={styles.sidebar}>
                 {this.elements.map((element, index) => (
-                    <div key={index} draggable onDragStart={(e) => this.dragStart(e, element)}>
+                    <div
+                        key={index}
+                        className={styles.element}
+                        draggable
+                        onDragStart={(e) => this.dragStart(e, element)}
+                    >
                         {element}
                     </div>
                 ))}

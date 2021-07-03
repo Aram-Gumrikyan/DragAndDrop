@@ -1,40 +1,43 @@
 import { Component } from "react";
+import classNames from "classnames";
 
 import styles from "./Box.module.scss";
 
 export default class Box extends Component {
     drop(e) {
         e.preventDefault();
+        const elements = ["button", "input", "textarea", "select", "radio", "checkbox"];
         const tegName = e.dataTransfer.getData("text/plain");
 
-        this.props.addFormElem(tegName, this.props.position, this.props.id);
-        this.dropOrDragEnds(e);
+        ~elements.indexOf(tegName) && this.props.addFormElem(tegName, this.props.position, this.props.id);
+
+        this.leaveOrDrop(e);
         this.props.drop(e);
     }
 
     dragEnter(e) {
         e.preventDefault();
-        e.target.style.backgroundColor = "#76FCDE";
-        e.target.style.border = "4px dotted #76FCDE";
+        e.target.classList.add(styles.dragEnter);
     }
 
-    dropOrDragEnds(e) {
+    leaveOrDrop(e) {
         e.preventDefault();
-        e.target.style.backgroundColor = "transparent";
-        e.target.style.border = "4px dotted black";
+        e.target.classList.remove(styles.dragEnter);
     }
 
     render() {
+        const divClass = classNames(styles.box, this.props.position);
+
         return (
             <div
-                className={`${styles.box} ${this.props.position}`}
+                className={divClass}
                 style={this.props.style}
                 onDragOver={(e) => e.preventDefault()}
                 onDragEnter={(e) => {
                     this.dragEnter(e);
                 }}
                 onDragLeave={(e) => {
-                    this.dropOrDragEnds(e);
+                    this.leaveOrDrop(e);
                 }}
                 onDrop={(e) => this.drop(e)}
             ></div>
