@@ -22,7 +22,9 @@ export default class ShowForm extends Component {
     elem(elem) {
         if (elem.tag === "button") {
             return React.createElement(elem.tag, { ...elem, key: "elem" + elem.id }, elem.context);
-        } else if (elem.tag === "select") {
+        }
+
+        if (elem.tag === "select") {
             const values = elem.option.split(" ");
 
             return React.createElement(
@@ -32,7 +34,9 @@ export default class ShowForm extends Component {
                     return React.createElement("option", { value: value, key: index }, value);
                 })
             );
-        } else if (elem.tag === "radio" || elem.tag === "checkbox") {
+        }
+
+        if (elem.tag === "radio" || elem.tag === "checkbox") {
             elem.type = elem.tag;
             elem.tag = "input";
 
@@ -46,12 +50,12 @@ export default class ShowForm extends Component {
         const form = tree.map((elem, index) => {
             if (Array.isArray(elem)) {
                 return React.createElement("div", { key: index }, this.drow(elem));
-            } else {
-                return [
-                    React.createElement("label", { key: "label" + elem.id, htmlFor: elem.id }, elem.label),
-                    this.elem(elem),
-                ];
             }
+
+            return [
+                React.createElement("label", { key: "label" + elem.id, htmlFor: elem.id }, elem.label),
+                this.elem(elem),
+            ];
         });
 
         return form;
